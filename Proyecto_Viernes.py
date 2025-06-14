@@ -3,6 +3,7 @@
    {rut :[nombre,apellidoPaterno,edad,estadoCivil,sexo, fecha_afiliacion]}'''
 from datetime import date
 from random import randint as random
+#Mi pc me pidio declarar randint as random, no se porque de otra forma no funcionaba
 #from rutificador import rut as validar
 
 personas={}
@@ -46,11 +47,18 @@ while sw==0:
             except Exception as e:
                 print("Ha ocurrido un error: ",e)
                 continue
+            
+            #En mi pc no pude instalar rutificador, por lo que no puedo validar el rut
+            
             '''if validar(rut):
                 print(f"El rut {rut} es válido")
             else:
                 print("Rut inválido")
                 continue'''
+                
+            if sexo.lower() not in ["masculino", "femenino"]:
+                print("Debe ingresar un género válido (Masculino o Femenino)")
+                continue
             if estadoCivil=="C":
                 estadoCivil="Casado"
             elif estadoCivil=="S":
@@ -67,7 +75,32 @@ while sw==0:
             if rut in personas:
                 print("Registro exitoso")
             break
-
+        
+        #Opcion 1 creada por: Johans Sepulveda
+        
+    elif opcion==2:
+        try :
+     
+            buscar = input("ingrese el numero de rut para verificar :\n")
+     
+            if buscar in personas:
+                    print("\n---informacion del usuario encontrado---\n")
+                    print("rut                 : ",personas[buscar]["rut"])
+                    print("nombre              : ",personas[buscar]["nombre"])
+                    print("edad                : ",personas[buscar]["edad"])
+                    print("estado civil        : ",personas[buscar]["estadoCivil"])
+                    print("genero              : ",personas[buscar]["Sexo"])
+                    print("fecha de afiliacion : ",personas[buscar]["fecha_afiliacion"])
+                    break 
+            else:
+                print("No se encontró el rut indicado")
+                
+        except ValueError:
+            print("ocurrio un error al buscar a la persona")
+            print ("vuelva a intentar")
+            continue
+            #Opcion 2 creada por: Nicolás Fernández
+            
     elif opcion == 3:
 
         fecha = date.today()
@@ -85,18 +118,18 @@ while sw==0:
         else:
             print("No se encuentra el rut indicado")
             continue
-        
-        
-
-             
-        
-    elif opcion == "4":
-        print("\n*******************************")
+                
+                #Opcion 3 creada por: Benjamín Gutierrez
+                
+    elif opcion == 4:
+        print("\n****************************************************************")
         print("\nGracias por usar el registro de afiliados de Isapre VIDA Y SALUD")
-        print("\nIntegrantes: Nicolás Fernandez \nBenjamín Gutierrez \nJavier Valtierra \nJohans Sepulveda")
-        print("\n Python:3.1 ")
-        print("\n*******************************")
+        print("\nIntegrantes: \nNicolás Fernandez \nBenjamín Gutierrez \nJavier Valtierra \nJohans Sepulveda")
+        print("\nPython:3.1 \nSoftware: 1.0\n")
+        print("*"*64)
         sw=1
+        
+        #Opcion 4 creada por: Javier Valtierra
   
     
 
