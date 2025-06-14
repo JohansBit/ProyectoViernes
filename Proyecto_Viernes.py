@@ -65,8 +65,20 @@ while sw==0:
                             "edad":edad, "estadoCivil": estadoCivil, "Sexo":sexo, "fecha_afiliacion": fecha_afiliacion}}
             print(personas[rut]["Nombre"])
             break
+    if opcion == 3:
+        fecha = date.today()
+        valor_certificado = random.randint(1000,1500)
+        if sexo == "masculino":
+            genero = "el señor"
+        elif sexo == "femenino":
+            genero = "la señorita"
+        solicitud = input("Ingrese el rut que desea solicitar el certificado: ")
 
-          
+        if solicitud in personas:
+          print("*****Certificado de afiliación*****")
+          print(f"Con fecha {fecha}, la persona " ,personas[solicitud]["nombre"] ,personas[solicitud]["apellidoPaterno"] ,", a la edad de ",personas[solicitud]["edad"]," / "personas[solicitud]["esatdoCivil"], ", a la edad de ",personas[solicitud]["edad"]" por un precio de ${valor_certificado} queda asociado a la isapre *Vida y Salud*")
+        else:
+          print("No se encuentra el rut indicado")
     elif opcion == "4":
         print("\n*******************************")
         print("\nGracias por usar el registro de afiliados de Isapre VIDA Y SALUD")
