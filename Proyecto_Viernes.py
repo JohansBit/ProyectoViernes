@@ -2,15 +2,16 @@
    diccionario ejemplo:
    {rut :[nombre,apellidoPaterno,edad,estadoCivil,sexo, fecha_afiliacion]}'''
 from datetime import date
-from random import randint
-from rutificador import Rut as validar
+from random import randint as random
+#from rutificador import rut as validar
+
 personas={}
 sw=0
 
 while sw==0:
-    print("-"*8)
+    print("-"*25)
     print("Bienvenido a Vida y Salud")
-    print("-"*8)
+    print("-"*25)
     print("1.Ingresar usuarios")
     print("2.Buscar Usuario")
     print("3.Imprimir Certificado ")
@@ -45,11 +46,11 @@ while sw==0:
             except Exception as e:
                 print("Ha ocurrido un error: ",e)
                 continue
-            if validar(rut):
+            '''if validar(rut):
                 print(f"El rut {rut} es válido")
             else:
                 print("Rut inválido")
-                continue
+                continue'''
             if estadoCivil=="C":
                 estadoCivil="Casado"
             elif estadoCivil=="S":
@@ -61,32 +62,41 @@ while sw==0:
                 continue
             
                 
-            personas={rut:{"Nombre": nombre, "Apellido": apellidoPaterno,
+            personas={rut:{"nombre": nombre, "apellidoPaterno": apellidoPaterno,
                             "edad":edad, "estadoCivil": estadoCivil, "Sexo":sexo, "fecha_afiliacion": fecha_afiliacion}}
-            print(personas[rut]["Nombre"])
+            if rut in personas:
+                print("Registro exitoso")
             break
-    if opcion == 3:
-        fecha = date.today()
-        valor_certificado = random.randint(1000,1500)
-        if sexo == "masculino":
-            genero = "el señor"
-        elif sexo == "femenino":
-            genero = "la señorita"
-        solicitud = input("Ingrese el rut que desea solicitar el certificado: ")
 
+    elif opcion == 3:
+
+        fecha = date.today()
+        valor_certificado = random(1000,1500)
+        solicitud = input("Ingrese el rut que desea solicitar el certificado: ")
+        
         if solicitud in personas:
-          print("*****Certificado de afiliación*****")
-          print(f"Con fecha {fecha}, la persona " ,personas[solicitud]["nombre"] ,personas[solicitud]["apellidoPaterno"] ,", a la edad de ",personas[solicitud]["edad"]," / "personas[solicitud]["esatdoCivil"], ", a la edad de ",personas[solicitud]["edad"]" por un precio de ${valor_certificado} queda asociado a la isapre *Vida y Salud*")
+            if personas[solicitud]["Sexo"] == "masculino":
+                genero = "el señor"
+            elif personas[solicitud]["Sexo"] == "femenino":
+                genero = "la señorita"
+            
+            print("*****Certificado de afiliación*****")
+            print(f"Con fecha {fecha}\nLa persona {personas[solicitud]["nombre"]} {personas[solicitud]["apellidoPaterno"]}, a la edad de {personas[solicitud]["edad"]}, del Sexo {personas[solicitud]["Sexo"]}, Estado civil {personas[solicitud]["estadoCivil"]}, por un precio de ${valor_certificado} queda asociado a la isapre *Vida y Salud*")
         else:
-          print("No se encuentra el rut indicado")
+            print("No se encuentra el rut indicado")
+            continue
+        
+        
+
+             
+        
     elif opcion == "4":
         print("\n*******************************")
         print("\nGracias por usar el registro de afiliados de Isapre VIDA Y SALUD")
         print("\nIntegrantes: Nicolás Fernandez \nBenjamín Gutierrez \nJavier Valtierra \nJohans Sepulveda")
         print("\n Python:3.1 ")
         print("\n*******************************")
-        break
-    else:
-        print("\nOpcion invalida porfavor reintente ")
+        sw=1
+  
     
 
