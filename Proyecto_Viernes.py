@@ -66,5 +66,15 @@ while sw==0:
             print(personas[rut]["Nombre"])
             break
 
-            
+          
+    elif opcion == "4":
+        print("\n*******************************")
+        print("\nGracias por usar el registro de afiliados de Isapre VIDA Y SALUD")
+        print("\nIntegrantes: Nicolás Fernandez \nBenjamín Gutierrez \nJavier Valtierra \nJohans Sepulveda")
+        print("\n Python:3.1 ")
+        print("\n*******************************")
+        break
+    else:
+        print("\nOpcion invalida porfavor reintente ")
     
+
